@@ -1,14 +1,20 @@
 /**
-* Created by user on 2015-11-20.
-
-
+	* Created by user on 2015-11-20.
 **/
-var app = angular.module('app',[]);
 
-app.controller('MainController',function($scope){
+
+// var app = angular.module('app',[]);
+
+// app.controller('MainController',function($scope){
 	
-	$scope.show = function(){
-		alert($scope.user.name);
-	}
+// 	$scope.show = function(){
+// 		alert($scope.user.name);
+// 	}
 
-});
+// });
+
+
+var obj = {};
+obj.data =1;
+
+console.log(obj.data);
