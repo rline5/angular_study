@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" ng-app="book">
+<head>
+    <meta charset="UTF-8">
+    <title>포인트 상점</title>
+    <script src="../components/angular/angular.js"></script>
+    <script src="../js/controllers/book.js"></script>
+    <script src="../js/controllers/bookList.js"></script>
+    <script src="../js/filters/customFilter.js"></script>
+    <link href="../components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"/>
+</head>
+<body ng-controller="bookCtrl" style="overflow:hidden">
+	<div class="navbar navbar-inverse">
+		<a href="#" class="navbar-brand">포인트 상점</a>
+	</div>
+	<div class="panel panel-default row" ng-controller="bookListCtrl">
+		<div class="col-xs-4">
+			<!-- 카테고리 -->
+			<div class="col-xs-4">
+				<a class="btn btn-block btn-default btn-lg" ng-click="selectGrade()" >Home</a>
+				<a ng-repeat="item in data.books | orderBy: 'grade' | unique:'grade'" 
+				ng-click="selectGrade(item)" class="btn btn-block btn-default btn-lg">{{item | number:0}}</a>
+			</div>
+		</div>
+		<div class="col-xs-8">
+			<div class="well" ng-repeat="item in data.books | filter:gradeFilterFn">
+				<h3>
+					<strong>{{item.name}}</strong>
+					<span class="pull-right label label-primary">{{item.price | number:0}} 원</span>  <!-- |은 필터이고 뒤에 number은 0단위로 끊어표시함을 의미-->
+				</h3>
+				<span class="lead">{{item.grade}}</span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
